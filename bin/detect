@@ -1,15 +1,9 @@
 #!/bin/bash
 
-echo $ENFORCE_APP_NAMING_PATTERN
-echo "Success"
-exit 0
+# Check if file exists
+if [ ! -f "$3/ENFORCE_APP_NAMING_PATTERN" ]; then
+    echo "ENFORCE_APP_NAMING_PATTERN is set. App name must start with $ENFORCE_APP_NAMING_PATTERN"
+    exit 0
+fi
 
-# # Check if ENFORCE_APP_NAMING_PATTERN is set
-# if [[ -z $ENFORCE_APP_NAMING_PATTERN ]]; then
-#     # The environment variable is not set, so we exit successfully
-#     echo "ENFORCE_APP_NAMING_PATTERN not set."
-#     exit 1
-# else
-#     echo "ENFORCE_APP_NAMING_PATTERN is set to $ENFORCE_APP_NAMING_PATTERN"
-#     exit 0
-# fi
+exit 1
