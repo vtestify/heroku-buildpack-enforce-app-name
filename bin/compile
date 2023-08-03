@@ -1,19 +1,17 @@
 #!/bin/bash
 
-if [ ! -f "$3/ENFORCE_APP_NAMING_PATTERN" ]; then
-    echo "ENFORCE_APP_NAMING_PATTERN not set in Heroku environment variables. Skipping check."
+if [ ! -f "$3/PERMITTED_APP_VERSION" ]; then
+    echo "PERMITTED_APP_VERSION not set in Heroku environment variables. Skipping check."
     exit 0
 fi
 
-ENFORCE_APP_NAMING_PATTERN=$(cat $3/ENFORCE_APP_NAMING_PATTERN)
-HEROKU_APP_NAME=$(cat $3/HEROKU_APP_NAME)
+PERMITTED_APP_VERSION=$(cat $3/PERMITTED_APP_VERSION)
+APP_VERSION=$(cat $1/app_version)
 
-echo "Checking app name $HEROKU_APP_NAME against $ENFORCE_APP_NAMING_PATTERN"
+echo "Detected app version $APP_VERSION - Version permitted $PERMITTED_APP_VERSION"
 
-if [[ $HEROKU_APP_NAME != $ENFORCE_APP_NAMING_PATTERN ]]; then
+if [[ $APP_VERSION != $PERMITTED_APP_VERSION ]]; then
     # The app name starts with vtv3dev-, so we exit
-    echo "Build halted - does not match app name $HEROKU_APP_NAME does not match pattern $ENFORCE_APP_NAME"
+    echo "Build halted - app version $APP_VERSION not permitted"
     exit 1
 fi
-
-echo "App name $HEROKU_APP_NAME matches pattern $ENFORCE_APP_NAMING_PATTERN. Continuing with build..."
