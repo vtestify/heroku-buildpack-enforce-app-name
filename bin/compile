@@ -2,13 +2,6 @@
 
 echo "Checking app name $HEROKU_APP_NAME against $ENFORCE_APP_NAMING_PATTERN"
 
-# Check if ENFORCE_APP_NAMING_PATTERN is set
-if [[ -z $ENFORCE_APP_NAMING_PATTERN ]]; then
-    # The environment variable is not set, so we exit successfully
-    echo "ENFORCE_APP_NAMING_PATTERN not set. Continuing with build..."
-    exit 0
-fi
-
 if [[ $HEROKU_APP_NAME != $ENFORCE_APP_NAMING_PATTERN ]]; then
     # The app name starts with vtv3dev-, so we exit
     echo "Build halted - does not match app name $HEROKU_APP_NAME does not match pattern $ENFORCE_APP_NAME"
