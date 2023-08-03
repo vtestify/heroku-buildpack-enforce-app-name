@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [ ! -f "$3/ENFORCE_APP_NAMING_PATTERN" ]; then
+    echo "ENFORCE_APP_NAMING_PATTERN not set in Heroku environment variables. Skipping check."
+    exit 0
+fi
+
 ENFORCE_APP_NAMING_PATTERN=$(cat $3/ENFORCE_APP_NAMING_PATTERN)
 HEROKU_APP_NAME=$(cat $3/HEROKU_APP_NAME)
 
