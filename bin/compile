@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo $1
+ls $1
 echo "Checking app name $HEROKU_APP_NAME against $ENFORCE_APP_NAMING_PATTERN"
 
 if [[ $HEROKU_APP_NAME != $ENFORCE_APP_NAMING_PATTERN ]]; then
