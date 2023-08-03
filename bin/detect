@@ -8,5 +8,6 @@ if [[ -z $ENFORCE_APP_NAMING_PATTERN ]]; then
     echo "ENFORCE_APP_NAMING_PATTERN not set."
     exit 1
 else
+    echo "ENFORCE_APP_NAMING_PATTERN is set to $ENFORCE_APP_NAMING_PATTERN"
     exit 0
 fi
