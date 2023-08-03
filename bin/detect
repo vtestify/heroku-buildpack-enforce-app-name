@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo $ENFORCE_APP_NAMING_PATTERN
+
 # Check if ENFORCE_APP_NAMING_PATTERN is set
 if [[ -z $ENFORCE_APP_NAMING_PATTERN ]]; then
     # The environment variable is not set, so we exit successfully
