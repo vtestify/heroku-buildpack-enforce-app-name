@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ ! -f "$3/PERMITTED_APP_VERSION" ]; then
-    echo "PERMITTED_APP_VERSION not set in Heroku environment variables. Skipping check."
+    echo "PERMITTED_APP_VERSION not set in Heroku environment variables. Skipping check..."
     exit 0
 fi
 
